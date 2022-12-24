@@ -6,8 +6,8 @@ import router from './router'
 
 const app = createApp(App)
 
-app.use(ElementPlus)
 app.use(router)
+app.use(ElementPlus)
 app.mount('#app')
 
 
