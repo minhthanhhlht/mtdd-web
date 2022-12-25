@@ -1,5 +1,37 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <div>
+    <Header />
+    <el-container class="container"> 
+      
+    </el-container>
+    <Footer />
+  </div>
   </div>
 </template>
+
+<script>
+
+import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
+
+export default {
+
+  components: {
+    Header,
+    Footer
+  }
+}
+
+</script>
+
+
+
+
+<style scoped lang="scss">
+.container {
+  width: 100vw;
+  height: 100vh;
+  background: url(@/assets/img/bg.jpg) repeat;
+}
+</style>

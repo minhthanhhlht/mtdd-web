@@ -1,9 +1,7 @@
 <template>
   <div>
     <Header />
-    <el-container class="container">
-
-    </el-container>
+    <el-container class="container"> </el-container>
     <Footer />
   </div>
 </template>
@@ -18,18 +16,18 @@ import Footer from "@/components/Footer.vue";
 
 export default {
   name: "HomeView",
+
   components: {
     Header,
-    Footer
-   
+    Footer,
   },
   data() {
     return {
-      
+      products: {}
     };
   },
   methods: {
-   
+    
   },
 };
 </script>
