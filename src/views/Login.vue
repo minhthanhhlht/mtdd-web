@@ -7,14 +7,16 @@
           <el-col :span="16" :xs="24">
             <div class="login-box">
               <div class="login-title">Đăng nhập hệ thống</div>
-              <el-form>
+              <el-form :rules="FormRules">
                 <!-- input user -->
-                <el-form-item prop="username">
+                <el-form-item  prop="username">
                   <el-input
-                    v-model="user.name"
+                    v-model="form.username"
                     placeholder="Tài khoản"
                     size="large"
-                    v-bind:class="{'is-error': errors.username}"
+                    :clearable="true"
+                    :class="!validate() ? 'error' : '' "
+                    
                   >
                     <template #prefix>
                       <i
@@ -23,16 +25,16 @@
                       ></i>
                     </template>
                   </el-input>
-                  <div class="el-form-item__error">{{ errors.username }}</div>
+                  <div v-if="!validate()" class="form-error">{{ errors.username }}</div>
                 </el-form-item>
                 <!-- input password -->
                 <el-form-item prop="password">
                   <el-input
-                    v-model="user.password"
+                    v-model="form.password"
                     placeholder="Mật khẩu"
                     size="large"
                     type="password"
-                   
+                    :clearable="true"
                   >
                     <template #prefix>
                       <i
@@ -41,6 +43,7 @@
                       ></i>
                     </template>
                   </el-input>
+                  <div v-if="!validate()" class="form-error">{{ errors.password }}</div>
                 </el-form-item>
                 <div class="form-footer">
                   <el-checkbox>Lưu thông tin</el-checkbox>
@@ -70,35 +73,73 @@
 <script>
 import Header from "@/components/Header.vue";
 
+import { reactive, ref } from "vue";
+import { ElNotification } from "element-plus";
+
+import { useVuelidate } from "@vuelidate/core";
+import { required, email } from "@vuelidate/validators";
+
 export default {
   name: "Login",
   data() {
     return {
-        errors: {
-            username: "",
-            password: ""
-        },
-      user: {
+      isActive: false,
+      v$: useVuelidate(),
+      errors: {
+        username: "",
+        password: "",
+      },
+      form: {
         username: "",
         password: "",
       },
     };
   },
+  validations() {
+    return {
+      form: {
+        username: { required },
+        password: { required },
+      },
+    };
+  },
+  setup() {},
   components: {
     Header,
   },
-  methods: {
+ 
+  methods: {  
     validate() {
-        this.errors = {
-            username: "",
-            password: ""
-        }
-        if(!this.errors.username) {
-            this.errors.username = "Vui lòng nhập tài khoản"
-        }
-    },
-    onSubmit() {
-      this.validate()
+      let isValid = true
+
+      if(this.form.username == "") {
+        this.errors.username = "Vui lòng nhập tài khoản"
+        isValid = false
+      }
+
+      if(this.form.password == "") {
+        this.errors.password = "Vui lòng nhập mật khẩu"
+        isValid = false
+      }
+
+      return isValid
+
+    }, 
+    onSubmit() {      
+      this.validate()      
+      if (!this.validate()) {
+        ElNotification({
+          title: "Hệ thống",
+          message: "Vui lòng điền đầy đủ thông tin",
+          type: "error",
+        });
+      } else {
+        ElNotification({
+          title: "Hệ thống",
+          message: "Đăng nhập thành công",
+          type: "success",
+        });
+      }
     },
   },
 };
@@ -158,15 +199,18 @@ export default {
   border-radius: 20px;
 }
 
-.el-form-item__error {
-    color: var(--el-color-danger);
-    font-size: 12px;
-    line-height: 1;
-    padding-top: 2px;
-    position: absolute;
-    top: 100%;
-    left: 0;
+.form-error {
+  color: var(--el-color-danger);
+  font-size: 12px;
+  line-height: 1;
+  padding-top: 2px;
+  position: absolute;
+  top: 100%;
+  left: 0;
 }
-
+.error {
+  box-shadow: 0 0 0 1px var(--el-color-danger);
+  border-radius: var(--el-input-border-radius,var(--el-border-radius-base));
+}
 
 </style>

@@ -36,12 +36,7 @@ export default {
      
     };
   },
-  methods: {
-   
-    // onSubmit() {
-    //   this.$emit('onSubmit', this.products);
-    // }
-  },
+  
 };
 </script>
 
