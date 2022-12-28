@@ -12,7 +12,7 @@
                 <el-form-item prop="username">
                   <el-input
                     v-model="form.username"
-                    placeholder="Tài khoản"
+                    placeholder="Email"
                     size="large"
                     :clearable="true"
                   >
@@ -71,9 +71,11 @@ import Header from "@/components/Header.vue";
 
 import { reactive, ref } from "vue";
 import { ElNotification } from "element-plus";
+import console from "console";
 
 export default {
   name: "Login",
+  components: { Header },
   data() {
     return {
       form: {
@@ -87,6 +89,11 @@ export default {
             message: "Vui lòng nhập tài khoản",
             trigger: "blur",
           },
+          {
+          type: 'email',
+          message: 'Vui lòng nhập đúng định dạng email',
+          trigger: ['blur', 'change'],
+        },
         ],
         password: [
           {
@@ -99,11 +106,8 @@ export default {
     };
   },
 
-  components: {
-    Header,
-  },
-
-  methods: {
+  
+  methods: {   
     validate(formName) {
       this.$refs[formName].validate((valid, fields) => {        
         if (valid) {
@@ -112,7 +116,7 @@ export default {
             message: "Đăng nhập thành công",
             type: "success",
           });
-          this.save();
+          this.loginSubmit();
         } else {
           ElNotification({
             title: "Hệ thống",
@@ -122,8 +126,14 @@ export default {
         }
       });
     },
-    save() {
-      alert("thanh cong");
+    loginSubmit() {
+      const userName = this.form.username     
+      
+      this.$request.get(`http://localhost:6021/api/getuser/${userName}`).then((response) => {
+        console.log(response.data)
+        alert("thanh cong");
+      })
+      
     },
   },
 };
