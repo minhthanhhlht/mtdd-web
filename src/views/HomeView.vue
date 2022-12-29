@@ -1,7 +1,9 @@
 <template>
   <div>
     <Header />
-    <el-container class="container"> </el-container>
+    <el-container class="container"> 
+      
+    </el-container>
     <Footer />
   </div>
 </template>

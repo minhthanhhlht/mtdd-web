@@ -9,6 +9,11 @@ const routes = [
     component: HomeView
   },
   {
+    path: '/dashboard',
+    name: 'dashboard',    
+    component: () => import(/* webpackChunkName: "about" */ '../views/dashboard/Dashboard.vue')
+  },
+  {
     path: '/about',
     name: 'about',
     
@@ -18,6 +23,11 @@ const routes = [
     path: '/login',
     name: 'login',    
     component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
+  },
+  {
+    path: '/register',
+    name: 'register',    
+    component: () => import(/* webpackChunkName: "about" */ '../views/Register.vue')
   }
 ]
 

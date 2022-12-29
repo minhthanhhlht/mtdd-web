@@ -30,11 +30,9 @@ nav a {
   color: #2c3e50;
   
 }
-a {
-    font-weight: bold;
+a {    
     color: #fff;
-    display: inline-block;
-    padding: 0px 15px 0px 15px;
+    display: inline-block;    
     text-decoration: none;
 }
 a:hover {   

@@ -2,7 +2,7 @@
   <div class="login">
     <el-container class="container is-vertical">
       <Header />
-      <el-main class="frontend-footer-brother" style="margin-top: 22px;">
+      <el-main class="frontend-footer-brother" style="margin-top: 22px">
         <el-row justify="center">
           <el-col :span="16" :xs="24">
             <div class="login-box">
@@ -53,7 +53,11 @@
                     size="large"
                     >Đăng Nhập</el-button
                   >
-                  <el-button class="register-button" type="default" size="large"
+                  <el-button
+                    class="register-button"
+                    @click="registerUser"
+                    type="default"
+                    size="large"
                     >Đăng ký tài khoản!</el-button
                   >
                 </el-form-item>
@@ -71,7 +75,8 @@ import Header from "@/components/Header.vue";
 
 import { reactive, ref } from "vue";
 import { ElNotification } from "element-plus";
-import console from "console";
+import { ElMessage } from "element-plus";
+
 
 export default {
   name: "Login",
@@ -112,11 +117,7 @@ export default {
         if (valid) {
           this.loginSubmit();
         } else {
-          ElNotification({
-            title: "Hệ thống",
-            message: "Vui lòng nhập đầy đủ thông tin",
-            type: "error",
-          });
+          ElMessage.error("Vui lòng nhập đầy đủ thông tin.");
         }
       });
     },
@@ -124,28 +125,21 @@ export default {
       this.$request
         .get(`http://localhost:6021/api/getuser/${this.form.username}`)
         .then((response) => {
-          
           const userName = this.form.username;
           const password = this.form.password;
           const user = response.data[0].username;
-          const pass = response.data[0].password;         
+          const pass = response.data[0].password;
           if (userName == user && password == pass) {
-             ElNotification({
-              title: "Hệ thống",
-              message: "Đăng nhập thành công",
-              type: "success",
-            });
+            ElMessage.success("Đăng nhập thành công.");
+            this.$router.push({ path: "/dashboard" });
           } else {
-            ElNotification({
-            title: "Hệ thống",
-            message: "Tài khoản hoặc mật khẩu không đúng",
-            type: "error",
-          });
+            ElMessage.error("Tài khoản hoặc mật khẩu không đúng.");
           }
-
-        
         });
     },
+    registerUser() {
+      this.$router.push({ path: "/register" });
+    }
   },
 };
 </script>
@@ -213,5 +207,4 @@ export default {
   top: 100%;
   left: 0;
 }
-
 </style>
