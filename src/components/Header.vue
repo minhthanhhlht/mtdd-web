@@ -2,10 +2,13 @@
   <el-header class="header">
     <el-row justify="center">
       <el-col class="header-row" :span="16" :xs="24">
-        <div class="header-logo">
+        <router-link to="/">
+          <div class="header-logo">
           <img src="@/assets/img/mtdd-logo.png" alt="" />
           <span class="hidden-xs-only">MTDD</span>
         </div>
+        </router-link>
+       
         <el-menu
           class="frontend-header-menu"
           mode="horizontal"

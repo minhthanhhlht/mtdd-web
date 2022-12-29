@@ -30,6 +30,16 @@ nav a {
   color: #2c3e50;
   
 }
+a {
+    font-weight: bold;
+    color: #fff;
+    display: inline-block;
+    padding: 0px 15px 0px 15px;
+    text-decoration: none;
+}
+a:hover {   
+    text-decoration: none;
+}
 
 nav a.router-link-exact-active {
   color: #42b983;

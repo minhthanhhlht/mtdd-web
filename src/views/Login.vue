@@ -2,7 +2,7 @@
   <div class="login">
     <el-container class="container is-vertical">
       <Header />
-      <el-main class="frontend-footer-brother">
+      <el-main class="frontend-footer-brother" style="margin-top: 22px;">
         <el-row justify="center">
           <el-col :span="16" :xs="24">
             <div class="login-box">
@@ -90,10 +90,10 @@ export default {
             trigger: "blur",
           },
           {
-          type: 'email',
-          message: 'Vui lòng nhập đúng định dạng email',
-          trigger: ['blur', 'change'],
-        },
+            type: "email",
+            message: "Vui lòng nhập đúng định dạng email",
+            trigger: ["blur", "change"],
+          },
         ],
         password: [
           {
@@ -106,16 +106,10 @@ export default {
     };
   },
 
-  
-  methods: {   
+  methods: {
     validate(formName) {
-      this.$refs[formName].validate((valid, fields) => {        
+      this.$refs[formName].validate((valid, fields) => {
         if (valid) {
-          ElNotification({
-            title: "Hệ thống",
-            message: "Đăng nhập thành công",
-            type: "success",
-          });
           this.loginSubmit();
         } else {
           ElNotification({
@@ -127,13 +121,30 @@ export default {
       });
     },
     loginSubmit() {
-      const userName = this.form.username     
-      
-      this.$request.get(`http://localhost:6021/api/getuser/${userName}`).then((response) => {
-        console.log(response.data)
-        alert("thanh cong");
-      })
-      
+      this.$request
+        .get(`http://localhost:6021/api/getuser/${this.form.username}`)
+        .then((response) => {
+          
+          const userName = this.form.username;
+          const password = this.form.password;
+          const user = response.data[0].username;
+          const pass = response.data[0].password;         
+          if (userName == user && password == pass) {
+             ElNotification({
+              title: "Hệ thống",
+              message: "Đăng nhập thành công",
+              type: "success",
+            });
+          } else {
+            ElNotification({
+            title: "Hệ thống",
+            message: "Tài khoản hoặc mật khẩu không đúng",
+            type: "error",
+          });
+          }
+
+        
+        });
     },
   },
 };
@@ -202,8 +213,5 @@ export default {
   top: 100%;
   left: 0;
 }
-.error {
-  box-shadow: 0 0 0 1px var(--el-color-danger);
-  border-radius: var(--el-input-border-radius, var(--el-border-radius-base));
-}
+
 </style>
