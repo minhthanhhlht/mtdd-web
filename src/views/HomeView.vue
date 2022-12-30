@@ -1,6 +1,7 @@
 <template>
   <div>
     <Header />
+    
     <el-container class="container"> 
       
     </el-container>
@@ -21,6 +22,7 @@ export default {
 
   components: {
     Header,
+    
     Footer,
   },
   data() {

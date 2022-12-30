@@ -1,23 +1,32 @@
 <template>
-    <div>
-        <Header />
-    </div>
+      
+    <el-container class="container"> 
+      <Header />
+      <Sidebar />
+    </el-container>    
+  
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
-
+import Header from "@/components/Header.vue";
+import Sidebar from "@/components/Sidebar.vue";
 
 export default {
-    components: { Header }
-}
-
+  components: { Header, Sidebar },
+};
 </script>
 
 <style lang="scss" scoped>
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background: url(@/assets/img/bg.jpg) repeat;
+}
+
 .header {
   color: rgb(0, 0, 0);
-   width: 100%;
+  width: 100%;
   position: fixed;
   background-color: transparent !important;
   // box-shadow: 0 0 8px rgba(0 0 0 / 8%);
@@ -71,13 +80,13 @@ export default {
   color: var(--el-menu-hover-text-color);
 }
 
-a {    
-    color: rgb(0, 0, 0) !important;
-    display: inline-block;    
-    text-decoration: none;
+a {
+  color: rgb(0, 0, 0) !important;
+  display: inline-block;
+  text-decoration: none;
 }
-a:hover {   
-    text-decoration: none;
+a:hover {
+  text-decoration: none;
 }
 
 // .router-link-active {
