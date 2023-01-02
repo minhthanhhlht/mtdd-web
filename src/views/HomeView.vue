@@ -19,10 +19,9 @@ import Footer from "@/components/Footer.vue";
 
 export default {
   name: "HomeView",
-
+ 
   components: {
-    Header,
-    
+    Header,    
     Footer,
   },
   data() {
@@ -40,6 +39,7 @@ export default {
 .container {
   width: 100vw;
   height: 100vh;
-  background: url(@/assets/img/bg.jpg) repeat;
+  background-color: #17AF95;
+  // background: url(@/assets/img/bg.jpg) repeat;
 }
 </style>

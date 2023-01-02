@@ -34,11 +34,8 @@ import { useRouter } from "vue-router";
 
 export default {
   name: "Header",
-  data() {
-    return {
-     
-    };
-  },
+  
+  
   
 };
 </script>
@@ -98,7 +95,8 @@ export default {
 .header .frontend-header-menu .el-menu-item:hover,
 .header .frontend-header-menu .el-sub-menu .el-sub-menu__title:hover {
   background-color: transparent;
-  color: var(--el-menu-hover-text-color);
+  color: #45bfaa;
+  // color: var(--el-menu-hover-text-color);
 }
 
 // .router-link-active {

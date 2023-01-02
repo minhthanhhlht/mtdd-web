@@ -30,14 +30,14 @@ nav a {
   color: #2c3e50;
   
 }
-a {    
+/* a {    
     color: #fff;
     display: inline-block;    
     text-decoration: none;
 }
 a:hover {   
     text-decoration: none;
-}
+} */
 
 nav a.router-link-exact-active {
   color: #42b983;
