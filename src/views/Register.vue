@@ -1,10 +1,24 @@
 <template>
   <div class="register">
     <el-container class="container is-vertical">
-      <Header />
+      <!-- Header -->
+      <el-row>
+        <el-col :span="8"><div class="grid-content ep-bg-purple" /></el-col>
+        <el-col :span="8">
+          <div class="grid-content ep-bg-purple-light" />
+          <router-link to="/">
+            <div class="header-logo">
+              <img src="@/assets/img/mtdd_logo_160x160.png" alt="logo-header" />
+              <span class="hidden-xs-only">MTDD</span>
+            </div>
+          </router-link>
+        </el-col>
+        <el-col :span="8"><div class="grid-content ep-bg-purple" /></el-col>
+      </el-row>
+
       <el-main class="frontend-footer-brother" style="margin-top: 22px">
         <el-row justify="center">
-          <el-col :span="16" :xs="24">
+          <el-col :span="6" :xs="18">
             <div class="register-box">
               <div class="register-title">Đăng ký tài khoản</div>
               <el-form ref="register" :model="register" :rules="rules">
@@ -77,9 +91,11 @@
                   </el-input>
                 </el-form-item>
 
-                <!-- <div class="form-footer">
-                  <el-checkbox>Đăng ký</el-checkbox>
-                </div> -->
+                <p class="quiet tos">
+                  Bằng cách đăng kí, bạn xác nhận bạn đã đọc và chấp nhận
+                  <a href="/">Điều khoản dịch vụ</a> và
+                  <a href="/">Chính sách riêng tư</a> của chúng tôi.
+                </p>
                 <!-- Button login -->
                 <el-form-item class="form-buttons">
                   <el-button
@@ -89,11 +105,26 @@
                     size="large"
                     >Đăng ký!</el-button
                   >
+                  <hr />
+                  <el-button
+                    class="login-button"  
+                    @click="loginUser"                  
+                    type="default"
+                    size="large"
+                    >Bạn đã có tài khoản! Đăng nhập</el-button
+                  >
                 </el-form-item>
               </el-form>
             </div>
           </el-col>
         </el-row>
+
+        <div class="leftLarge">
+          <img class="footer-image" src="@/assets/img/mtdd-left.png" alt="" />
+        </div>
+        <div class="rightLarge">
+          <img class="footer-image" src="@/assets/img/mtdd-right.png" alt="" />
+        </div>
       </el-main>
     </el-container>
   </div>
@@ -105,7 +136,7 @@ import { ElMessage } from "element-plus";
 
 export default {
   name: "Register",
-  components: { Header },
+  components: {},
   data() {
     return {
       register: {
@@ -133,11 +164,11 @@ export default {
             message: "Vui lòng nhập số điện thoại",
             trigger: "blur",
           },
-        //   {
-        //     type: "number",
-        //     message: "Vui lòng nhập đúng định dạng số điện thoại",
-        //     trigger: "blur",
-        //   },
+          //   {
+          //     type: "number",
+          //     message: "Vui lòng nhập đúng định dạng số điện thoại",
+          //     trigger: "blur",
+          //   },
         ],
         password: [
           {
@@ -157,16 +188,18 @@ export default {
     };
   },
   methods: {
+    loginUser() {
+      this.$router.push({ path: "/login" });
+    },
     validate(formName) {
       this.$refs[formName].validate((valid, fields) => {
         if (valid) {
-            if (this.register.password === this.register.repassword) {
-            // this.loginSubmit(); 
-            alert('thành công')
-            } else {
-                ElMessage.error("Nhập lại mật khẩu không đúng.");
-            }
-         
+          if (this.register.password === this.register.repassword) {
+            // this.loginSubmit();
+            alert("thành công");
+          } else {
+            ElMessage.error("Nhập lại mật khẩu không đúng.");
+          }
         } else {
           ElMessage.error("Vui lòng nhập đầy đủ thông tin.");
         }
@@ -177,25 +210,63 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+a {
+  color: #253858;
+  display: inline-block;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+
+.header-logo {
+  display: flex;
+  height: 60px;
+  align-items: center;
+  cursor: pointer;
+
+  img {
+    height: 43px;
+    width: 43px;
+  }
+  span {
+    color: #253858;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+    padding-left: 12px;
+    font-size: 20px;
+  }
+}
+
+.grid-content {
+  margin-top: 40px;
+}
+
 .container {
   width: 100vw;
   height: 100vh;
-  background: url(@/assets/img/bg.jpg) repeat;
+  background-color: #f9fafc;
+  // background: url(@/assets/img/bg.jpg) repeat;
 }
 
 .register-box {
-  width: 400px;
-  margin: 86px auto;
+  width: 316px;
+  // margin: 86px auto;
+  margin-top: 40px;
   border-radius: 12px;
-  padding: 10px 60px 20px 60px;
-  background-color: var(--el-bg-color-page);
+  padding: 25px 40px;
+  max-width: 585px;
+  background-color: #ffffff;
+  box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
 }
 
 .register-title {
   text-align: center;
-  color: rgb(0, 0, 0);
-  font-size: var(--el-font-size-large);
-  line-height: 100px;
+  color: #5e6c84;
+  letter-spacing: -0.01em;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 68px;
   user-select: none;
 }
 
@@ -218,16 +289,35 @@ export default {
   padding-top: 20px;
   .el-button {
     width: 100%;
-    letter-spacing: 2px;
-    font-weight: 300;
+    letter-spacing: 0.5px;
     margin-top: 20px;
     margin-left: 0;
   }
 }
 
+.tos {
+  text-align: left;
+  margin-top: 20px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #5e6c84;
+}
+
+hr {
+  display: block;
+  width: 100%;
+  height: 1px;
+  border: 0;
+  border-top: 2px solid hsl(0, 0%, 80%);
+  margin: 1em 0;
+  padding: 0;
+}
+
 .login-button,
 .register-button {
-  border-radius: 20px;
+  font-weight: bold;
+  border-radius: 4.8px;
+  box-shadow: rgb(0 0 0 / 20%) 1px 1px 5px 0;
 }
 
 .form-error {
@@ -238,5 +328,21 @@ export default {
   position: absolute;
   top: 100%;
   left: 0;
+}
+
+.leftLarge {
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 400px;
+  bottom: 0;
+  max-width: 30%;
+}
+.rightLarge {
+  position: fixed;
+  width: 400px;
+  bottom: 0;
+  right: 0;
+  max-width: 30%;
 }
 </style>

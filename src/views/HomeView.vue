@@ -1,11 +1,61 @@
 <template>
   <div>
-    <Header />
-    
-    <el-container class="container"> 
-      
+    <el-container class="container">
+      <Header />
+      <el-main class="content">
+        <el-row class="section-register">
+          <el-col :span="24"
+            ><div class="grid-content ep-bg-purple-dark"
+          /></el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="24"
+            ><div class="grid-content ep-bg-purple-dark"
+          /></el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="24"
+            ><div class="grid-content ep-bg-purple-dark"
+          /></el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="24"
+            ><div class="grid-content ep-bg-purple-dark"
+          /></el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="24"
+            ><div class="grid-content ep-bg-purple-dark"
+          /></el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="24"
+            ><div class="grid-content ep-bg-purple-dark"
+          /></el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="24"
+            ><div class="grid-content ep-bg-purple-dark"
+          /></el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="24"
+            ><div class="grid-content ep-bg-purple-dark"
+          /></el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="24"
+            ><div class="grid-content ep-bg-purple-dark"
+          /></el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="24"
+            ><div class="grid-content ep-bg-purple-dark"
+          /></el-col>
+        </el-row>
+      </el-main>
+      <Footer />
     </el-container>
-    <Footer />
   </div>
 </template>
 
@@ -19,19 +69,17 @@ import Footer from "@/components/Footer.vue";
 
 export default {
   name: "HomeView",
- 
+
   components: {
-    Header,    
+    Header,
     Footer,
   },
   data() {
     return {
-      products: {}
+      products: {},
     };
   },
-  methods: {
-    
-  },
+  methods: {},
 };
 </script>
 
@@ -39,7 +87,21 @@ export default {
 .container {
   width: 100vw;
   height: 100vh;
-  background-color: #17AF95;
+  background-color: #ffffff;
   // background: url(@/assets/img/bg.jpg) repeat;
+}
+
+.content {
+  height: 500px;
+  padding: 0;
+  margin-top: 60px;
+}
+.section-register {
+  background: url(https://images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg)
+      center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box,
+    linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto
+      repeat scroll padding-box border-box rgb(82, 67, 170);
+  height: 100%;
+  width: 100%;
 }
 </style>

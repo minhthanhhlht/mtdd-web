@@ -6,7 +6,7 @@ const routes = [
     path: "/",
     name: "home",
     component: HomeView,
-    meta: { title: "Trang chủ" },
+    meta: { title: "Quản lý dự án ở khắp nơi | MTDD" },
   },
   {
     path: "/dashboard",
@@ -35,6 +35,7 @@ const routes = [
     name: "register",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Register.vue"),
+      meta: { title: "Tạo tài khoản MTDD" },
   },
 ];
 

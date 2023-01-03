@@ -252,7 +252,7 @@ a:hover {
   letter-spacing: -0.01em;
   font-weight: bold;
   font-size: 16px;
-  line-height: 100px;
+  line-height: 68px;
   user-select: none;
 }
 
