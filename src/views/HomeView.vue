@@ -5,13 +5,12 @@
       <el-main class="content">
         <el-row class="section-register">
           <el-row>
-            <el-col :span="12"
-              ><div class="grid-content ep-bg-purple" />
+            <el-col :span="12">
               <h1 class="title-one">
                 Trello tập hợp tất cả nhiệm vụ, thành viên nhóm và công cụ của
                 bạn lại với nhau
               </h1>
-              <p>
+              <p class="information-one">
                 Duy trì mọi thứ ở cùng một nơi—dù cho nhóm của bạn không ở cùng
                 nhau.
               </p>
@@ -43,42 +42,37 @@
           </el-row>
         </el-row>
 
+        <el-row class="section-about">
+          <el-col :span="24"> 
+            <p class="information-two">Thông tin cơ bản về Trello</p>
+            <h2 class="title-two">Đỉnh cao về năng suất</h2>
+            <p class="information-three">Đơn giản, linh hoạt và mạnh mẽ. Chỉ với bảng, danh sách và thẻ, bạn sẽ biết rõ ai đang làm gì và những việc cần làm. Tìm hiểu thêm trong hướng dẫn bắt đầu của chúng tôi.</p>
+          </el-col>
+
+          <el-col :span="12">
+          </el-col>
+        </el-row>
         <el-row> </el-row>
-        <el-row> </el-row>
         <el-row>
-          <el-col :span="24"
-            ><div class="grid-content ep-bg-purple-dark"
-          /></el-col>
+          <el-col :span="24"><div class="grid-content" /></el-col>
         </el-row>
         <el-row>
-          <el-col :span="24"
-            ><div class="grid-content ep-bg-purple-dark"
-          /></el-col>
+          <el-col :span="24"><div class="grid-content" /></el-col>
         </el-row>
         <el-row>
-          <el-col :span="24"
-            ><div class="grid-content ep-bg-purple-dark"
-          /></el-col>
+          <el-col :span="24"><div class="grid-content" /></el-col>
         </el-row>
         <el-row>
-          <el-col :span="24"
-            ><div class="grid-content ep-bg-purple-dark"
-          /></el-col>
+          <el-col :span="24"><div class="grid-content" /></el-col>
         </el-row>
         <el-row>
-          <el-col :span="24"
-            ><div class="grid-content ep-bg-purple-dark"
-          /></el-col>
+          <el-col :span="24"><div class="grid-content" /></el-col>
         </el-row>
         <el-row>
-          <el-col :span="24"
-            ><div class="grid-content ep-bg-purple-dark"
-          /></el-col>
+          <el-col :span="24"><div class="grid-content" /></el-col>
         </el-row>
         <el-row>
-          <el-col :span="24"
-            ><div class="grid-content ep-bg-purple-dark"
-          /></el-col>
+          <el-col :span="24"><div class="grid-content" /></el-col>
         </el-row>
       </el-main>
       <Footer />
@@ -137,13 +131,22 @@ export default {
 
 .title-one {
   width: 400px;
+  margin-top: 46px;
   margin-left: 200px;
   color: #ffffff;
   text-align: left;
   font-size: 48px;
 }
 
-p {
+.title-two {
+  margin-left: 200px;
+  margin-bottom: 16px;
+  font-weight: bold;
+  font-size: 2.2rem;
+  text-align: left;
+  text-transform: uppercase;
+}
+.information-one {
   width: 500px;
   font-size: 20px;
   margin-left: 200px;
@@ -152,6 +155,23 @@ p {
   color: #ffffff;
   margin-top: 8px;
   margin-bottom: 24px;
+}
+
+.information-two {
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 200px;
+  margin-bottom: 8px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.information-three {
+  font-size: 20px;
+  margin-left: 200px;
+  text-align: left;
+  max-width: 600px;
+  word-wrap: break-word;
 }
 
 img {
