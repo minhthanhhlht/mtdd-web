@@ -41,13 +41,13 @@
                 </el-form-item>
                 <!-- input password -->
                 <el-form-item prop="password">
-                  <el-input
-                 
+                  <el-input                  
                     v-model="form.password"
                     placeholder="Mật khẩu"
                     size="large"
                     type="password"
                     :clearable="true"
+                    :show-password="true"
                   >
                     <template #prefix>
                       <i

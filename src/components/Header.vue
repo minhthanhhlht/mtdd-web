@@ -29,9 +29,12 @@
           :ellipsis="false"
           mode="horizontal"
         >
+        <router-link to="/login">
           <el-menu-item>
             Đăng nhập
           </el-menu-item>
+        </router-link>
+         
         </el-menu>
       </el-col>
     </el-row>
@@ -54,6 +57,7 @@ export default {
   width: 100%;  
   position: fixed;
   background-color: #ffffff !important;
+  box-shadow: rgb(9 30 66 / 15%) 0px 0.5rem 1rem 0px;
   // box-shadow: 0 0 8px rgba(0 0 0 / 8%);
 }
 
